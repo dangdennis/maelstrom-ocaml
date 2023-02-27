@@ -1,5 +1,0 @@
-2023/02/27 02:07:00 Received {c0 n0 {"type":"init","node_id":"n0","node_ids":["n0"],"msg_id":1}}
-2023/02/27 02:07:00 Node n0 initialized
-2023/02/27 02:07:00 Sent {"src":"n0","dest":"c0","body":{"in_reply_to":1,"type":"init_ok"}}
-2023/02/27 02:07:00 Received {c2 n0 {"echo":"Please echo 5","type":"echo","msg_id":1}}
-2023/02/27 02:07:00 No handler for {"id":2,"src":"c2","dest":"n0","body":{"echo":"Please echo 5","type":"echo","msg_id":1}}
