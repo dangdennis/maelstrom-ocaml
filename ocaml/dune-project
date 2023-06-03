@@ -19,7 +19,7 @@
  (name maelstrom)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml dune eio_main)
+ (depends ocaml dune yojson ppx_yojson_conv pps)
  (tags
   (topics "to describe" your project)))
 

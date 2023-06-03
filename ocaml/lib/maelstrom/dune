@@ -1,3 +1,5 @@
 (library
  (name maelstrom)
- (libraries eio_main))
+ (libraries yojson)
+ (preprocess
+  (pps ppx_yojson_conv)))

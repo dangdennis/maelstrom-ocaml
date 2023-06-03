@@ -12,7 +12,9 @@ bug-reports: "https://github.com/username/reponame/issues"
 depends: [
   "ocaml"
   "dune" {>= "3.8"}
-  "eio_main"
+  "yojson"
+  "ppx_yojson_conv"
+  "pps"
   "odoc" {with-doc}
 ]
 build: [
