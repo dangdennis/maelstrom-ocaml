@@ -1,5 +1,0 @@
-# dune init project ocaml_glomers
-# OCAMLPARAM: unset
-# Shared cache: disabled
-# Workspace root: /Users/dennisdang/Desktop/fly-gossip-glomers/ocaml_glomers
-# Auto-detected concurrency: 10

@@ -1,6 +1,6 @@
 (lang dune 3.8)
 
-(name ocaml_glomers)
+(name maelstrom)
 
 (generate_opam_files true)
 
@@ -16,10 +16,10 @@
 (documentation https://url/to/documentation)
 
 (package
- (name ocaml_glomers)
+ (name maelstrom)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml dune)
+ (depends ocaml dune eio_main)
  (tags
   (topics "to describe" your project)))
 
