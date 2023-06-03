@@ -1,0 +1,4 @@
+(executable
+ (public_name ocaml_glomers)
+ (name main)
+ (libraries ocaml_glomers))
