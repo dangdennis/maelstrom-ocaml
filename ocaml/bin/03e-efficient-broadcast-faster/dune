@@ -1,0 +1,4 @@
+(executable
+ (public_name 03e-efficient-broadcast-faster)
+ (name main)
+ (libraries maelstrom))
