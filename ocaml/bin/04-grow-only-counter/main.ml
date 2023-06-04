@@ -1,13 +1,17 @@
 open Maelstrom
 
 let handle_add msg =
-  let _delta = Message.get_add_delta msg in
+  let delta = Message.get_add_delta msg in
+  Kv.increment delta;
   Node.send ~log:true (Message.get_sender msg) (`Assoc [ "type", `String "add_ok" ]);
   ()
 ;;
 
 let handle_read msg =
-  Node.send (Message.get_sender msg) (`Assoc [ "type", `String "read_ok"; "value", `Int 1234 ]);
+  let count = Kv.read () in
+  Node.send
+    (Message.get_sender msg)
+    (`Assoc [ "type", `String "read_ok"; "value", `Int count ]);
   ()
 ;;
 

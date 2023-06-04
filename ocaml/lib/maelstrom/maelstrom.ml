@@ -2,6 +2,7 @@ module Protocol = Protocol
 module Message = Message
 module Print = Print
 module Node = Node
+module Kv = Kv
 
 module MessageProcessor = struct
   let handle_init message =

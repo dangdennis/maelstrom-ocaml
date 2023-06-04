@@ -15,7 +15,7 @@ depends: [
   "ppx_yojson_conv"
   "pps"
   "uuidm"
-  "kcas"
+  "kcas_data"
   "odoc" {with-doc}
 ]
 build: [
