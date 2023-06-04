@@ -1,4 +1,4 @@
 (executable
- (public_name 03-echo)
+ (public_name 03a-broadcast)
  (name main)
  (libraries maelstrom))

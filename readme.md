@@ -17,19 +17,21 @@
 Translated the rust [`maelstrom-node`](https://github.com/sitano/maelstrom-rust-node/blob/main/src/protocol.rs#L41) to ocaml
 
 1. `cd maelstrom`
+2. dune build
+3. challenge 1 echo
 
-2. challenge 1 echo
+```
+./maelstrom test -w echo --bin ../ocaml/_build/default/bin/01-echo/main.exe --node-count 1 --time-limit 10
+```
 
-   ```
-   dune build
+5. challenge 2 unique ids
 
-   ./maelstrom test -w echo --bin ../ocaml/_build/default/bin/01-echo/main.exe --node-count 1 --time-limit 10
-   ```
+```
+./maelstrom test -w unique-ids --bin ../ocaml/_build/default/bin/02-unique-ids/main.exe --time-limit 30 --rate 1000 --node-count 3 --availability total --nemesis partition
+```
 
-3. challenge 2 unique ids
+6. challenge 3 broadcast
 
-   ```
-   dune build
-
-   ./maelstrom test -w unique-ids --bin ../ocaml/_build/default/bin/02-unique-ids/main.exe --time-limit 30 --rate 1000 --node-count 3 --availability total --nemesis partition
-   ```
+```
+./maelstrom test -w broadcast --bin ../ocaml/_build/default/bin/03a-broadcast/main.exe --node-count 1 --time-limit 20 --rate 10
+```
