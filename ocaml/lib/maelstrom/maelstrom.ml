@@ -8,6 +8,7 @@ let node_ids : string list ref = ref []
 module Node = struct
   let get_node_id () = !node_id
   let get_node_ids () = !node_ids
+  let generate_node_id () = get_node_id () ^ "-" ^ Uuid.generate_uuid ()
 end
 
 module MessageProcessor = struct
