@@ -1,45 +1,22 @@
 module Protocol = Protocol
 module Message = Message
 module Print = Print
-
-let node_id = ref ""
-let node_ids = ref []
-let state : int list ref = ref []
-
-module Node = struct
-  let get_node_id () = !node_id
-  let get_node_ids () = !node_ids
-  let generate_node_id () = get_node_id () ^ "-" ^ Uuid.generate_uuid ()
-  let read_state () = !state
-  let set_state value = state := value :: !state
-
-  let reply ?(dev = false) recv_msg body =
-    let reply_msg =
-      `Assoc
-        [ "src", `String (get_node_id ())
-        ; "dest", `String (Message.get_sender recv_msg)
-        ; "body", body
-        ]
-    in
-    if dev then Print.print_stderr (Yojson.to_string reply_msg);
-    Print.print_stdout (Yojson.to_string reply_msg)
-  ;;
-end
+module Node = Node
 
 module MessageProcessor = struct
   let handle_init message =
     try
-      node_id := Message.get_node_id message;
-      node_ids := Message.get_node_ids message;
-      Print.print_stderr ("Node " ^ !node_id ^ " initialized");
-      let reply_msg : Protocol.init_ok_message =
-        { src = !node_id
+      Message.get_node_id message |> Node.set_node_id;
+      Message.get_node_ids message |> Node.update_topology;
+      let node_id = Node.get_node_id () in
+      Print.print_stderr ("Node " ^ node_id ^ " initialized");
+      Protocol.yojson_of_init_ok_message
+        { src = node_id
         ; dest = Message.get_sender message
         ; body = { typ = "init_ok"; in_reply_to = Message.get_msg_id message }
         }
-      in
-      Print.print_stdout
-        (Protocol.yojson_of_init_ok_message reply_msg |> Yojson.Safe.to_string);
+      |> Yojson.Safe.to_string
+      |> Print.print_stdout;
       ()
     with
     | exn -> Printexc.to_string exn |> print_endline

@@ -1,8 +1,8 @@
 open Maelstrom
 
 let handle_generate msg =
-  Node.reply
-    msg
+  Node.send
+    (Message.get_sender msg)
     (`Assoc
       [ "type", `String "generate_ok"
       ; "msg_id", `Int (Message.get_msg_id msg)

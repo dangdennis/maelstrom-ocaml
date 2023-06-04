@@ -2,8 +2,8 @@ open Maelstrom
 
 let handle_echo msg =
   let open Yojson.Safe.Util in
-  Node.reply
-    msg
+  Node.send
+    (Message.get_sender msg)
     (`Assoc
       [ "type", `String "echo_ok"
       ; "msg_id", `Int (Message.get_msg_id msg)
