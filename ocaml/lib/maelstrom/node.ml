@@ -13,10 +13,10 @@ let set_state new_state =
 
 let update_topology nodes = node_ids := nodes
 
-let send ?(dev = false) dest body =
+let send ?(log = false) dest body =
   let reply_msg =
     `Assoc [ "src", `String (get_node_id ()); "dest", `String dest; "body", body ]
   in
-  if dev then Print.print_stderr (Yojson.to_string reply_msg);
+  if log then Print.print_stderr (Yojson.to_string reply_msg);
   Print.print_stdout (Yojson.to_string reply_msg)
 ;;

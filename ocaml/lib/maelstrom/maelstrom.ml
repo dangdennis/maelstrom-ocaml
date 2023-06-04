@@ -29,12 +29,12 @@ module MessageProcessor = struct
   ;;
 end
 
-let run handler =
+let run ?(log = false) handler =
   Print.print_stderr "Node running...";
   let rec loop () =
     let line = input_line stdin in
     let message = Yojson.Safe.from_string line in
-    Print.print_stderr ("Received: " ^ line);
+    if log then Print.print_stderr ("Received: " ^ line);
     MessageProcessor.handle message handler;
     loop ()
   in

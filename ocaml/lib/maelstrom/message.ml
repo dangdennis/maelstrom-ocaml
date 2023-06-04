@@ -15,6 +15,8 @@ let get_broadcasted_state msg =
   msg |> member "body" |> member "messages" |> to_list |> List.map to_int
 ;;
 
+let get_add_delta msg = msg |> member "body" |> member "delta" |> to_int
+
 module StringSet = Set.Make (String)
 module IntSet = Set.Make (Int)
 

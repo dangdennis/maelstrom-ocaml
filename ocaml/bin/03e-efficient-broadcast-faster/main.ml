@@ -4,7 +4,6 @@ let handle_broadcast msg =
   let value = Message.get_broadcasted_value msg in
   Node.set_state [ value ];
   Node.send
-    ~dev:true
     (Message.get_sender msg)
     (`Assoc
       [ "type", `String "broadcast_ok"
@@ -30,7 +29,6 @@ let handle_broadcast msg =
 let handle_topology msg =
   msg |> Message.get_topology |> Node.update_topology;
   Node.send
-    ~dev:true
     (Message.get_sender msg)
     (`Assoc
       [ "type", `String "topology_ok"
@@ -42,7 +40,6 @@ let handle_topology msg =
 
 let handle_read msg =
   Node.send
-    ~dev:true
     (Message.get_sender msg)
     (`Assoc
       [ "type", `String "read_ok"
