@@ -31,10 +31,3 @@ type error_message_body =
 [@@deriving yojson]
 
 type error_message = error_message_body message [@@deriving yojson]
-
-let get_type msg =
-  msg
-  |> Yojson.Safe.Util.member "body"
-  |> Yojson.Safe.Util.member "type"
-  |> Yojson.Safe.Util.to_string
-;;
