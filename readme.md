@@ -30,8 +30,14 @@ Translated the rust [`maelstrom-node`](https://github.com/sitano/maelstrom-rust-
 ./maelstrom test -w unique-ids --bin ../ocaml/_build/default/bin/02-unique-ids/main.exe --time-limit 30 --rate 1000 --node-count 3 --availability total --nemesis partition
 ```
 
-6. challenge 3 broadcast
+6. challenge 3a single-node broadcast
 
 ```
 ./maelstrom test -w broadcast --bin ../ocaml/_build/default/bin/03a-broadcast/main.exe --node-count 1 --time-limit 20 --rate 10
+```
+
+7. challenge 3b multi-node broadcast
+
+```
+./maelstrom test -w broadcast --bin ../ocaml/_build/default/bin/03b-multi-node-broadcast/main.exe --node-count 5 --time-limit 20 --rate 10
 ```

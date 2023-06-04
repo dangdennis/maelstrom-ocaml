@@ -1,0 +1,4 @@
+(executable
+ (public_name 03a-multi-node-broadcast)
+ (name main)
+ (libraries maelstrom))
