@@ -1,9 +1,9 @@
 open Maelstrom
 
-(* let handle_echo msg =
-  let open Yojson.Safe.Util in
-  let get_echo msg = msg |> member "body" |> member "echo" |> to_string in
-  let reply =
+let handle_broadcast msg =
+  let value = Message.get_broadcast_value msg in
+  Node.set_state value;
+  (* let reply =
     `Assoc
       [ "src", `String (Node.get_node_id ())
       ; "dest", `String (Message.get_sender msg)
@@ -17,11 +17,10 @@ open Maelstrom
       ]
   in
   Print.print_stderr (Yojson.to_string reply);
-  Print.print_stdout (Yojson.to_string reply);
+  Print.print_stdout (Yojson.to_string reply); *)
   ()
-;; *)
+;;
 
-let handle_broadcast _msg = ()
 let handle_topology _msg = ()
 let handle_read _msg = ()
 
