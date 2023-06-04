@@ -1,0 +1,4 @@
+(executable
+ (public_name 03c-fault-tolerant-broadcast)
+ (name main)
+ (libraries maelstrom))
