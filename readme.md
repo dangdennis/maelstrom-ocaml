@@ -48,3 +48,9 @@ Translated the rust [`maelstrom-node`](https://github.com/sitano/maelstrom-rust-
 ```
 ./maelstrom test -w broadcast --bin ../ocaml/_build/default/bin/03c-fault-tolerant-broadcast/main.exe --node-count 5 --time-limit 20 --rate 10 --nemesis partition
 ```
+
+### 3d efficient broadcast
+
+```
+./maelstrom test -w broadcast --bin ../ocaml/_build/default/bin/03d-efficient-broadcast/main.exe --node-count 25 --time-limit 20 --rate 100 --latency 100
+```
