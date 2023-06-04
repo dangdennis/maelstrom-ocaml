@@ -1,11 +1,9 @@
 open Maelstrom
 
 let handle_broadcast msg =
-  let value = Message.get_broadcast_value msg in
-  Node.set_state value;
-  Node.reply
-    ~dev:true
-    msg
+  Message.get_broadcast_value msg |> Node.set_state;
+  Node.send
+    (Message.get_sender msg)
     (`Assoc
       [ "type", `String "broadcast_ok"
       ; "msg_id", `Int (Message.get_msg_id msg)
@@ -16,9 +14,8 @@ let handle_broadcast msg =
 
 let handle_topology msg =
   (* @todo msg should update node's known topology *)
-  Node.reply
-    ~dev:true
-    msg
+  Node.send
+    (Message.get_sender msg)
     (`Assoc
       [ "type", `String "topology_ok"
       ; "msg_id", `Int (Message.get_msg_id msg)
@@ -28,9 +25,8 @@ let handle_topology msg =
 ;;
 
 let handle_read msg =
-  Node.reply
-    ~dev:true
-    msg
+  Node.send
+    (Message.get_sender msg)
     (`Assoc
       [ "type", `String "read_ok"
       ; "msg_id", `Int (Message.get_msg_id msg)
