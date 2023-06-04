@@ -6,7 +6,11 @@ let get_node_id () = !node_id
 let get_node_ids () = !node_ids
 let generate_node_id () = get_node_id () ^ "-" ^ Uuid.generate_uuid ()
 let read_state () = !state
-let set_state value = state := value :: !state
+
+let set_state new_state =
+  state := List.concat [ new_state; !state ] |> Message.deduplicate_int
+;;
+
 let update_topology nodes = node_ids := nodes
 
 let send ?(dev = false) dest body =

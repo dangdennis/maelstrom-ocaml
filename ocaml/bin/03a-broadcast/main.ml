@@ -1,7 +1,7 @@
 open Maelstrom
 
 let handle_broadcast msg =
-  Message.get_broadcast_value msg |> Node.set_state;
+  Node.set_state [ Message.get_broadcasted_value msg ];
   Node.send
     (Message.get_sender msg)
     (`Assoc

@@ -1,8 +1,8 @@
 open Maelstrom
 
 let handle_broadcast msg =
-  let value = Message.get_broadcast_value msg in
-  Node.set_state value;
+  let value = Message.get_broadcasted_value msg in
+  Node.set_state [ value ];
   Node.send
     ~dev:true
     (Message.get_sender msg)
@@ -20,7 +20,7 @@ let handle_broadcast msg =
            node
            (`Assoc
              [ "type", `String "update_state"
-             ; "values", `List (List.map (fun v -> `Int v) state)
+             ; "messages", `List (List.map (fun v -> `Int v) state)
              ]))
   in
   broadcast ();
@@ -53,7 +53,10 @@ let handle_read msg =
   ()
 ;;
 
-let handle_update_vals _msg = ()
+let handle_update_vals msg =
+  Message.get_broadcasted_state msg |> Node.set_state;
+  ()
+;;
 
 let () =
   Maelstrom.run (fun msg ->
