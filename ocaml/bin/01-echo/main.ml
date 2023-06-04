@@ -16,7 +16,6 @@ let handle_echo msg =
             ] )
       ]
   in
-  Print.print_stderr (Yojson.to_string reply);
   Print.print_stdout (Yojson.to_string reply);
   ()
 ;;

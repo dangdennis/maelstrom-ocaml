@@ -1,0 +1,4 @@
+(executable
+ (public_name 03-unique-ids)
+ (name main)
+ (libraries maelstrom))

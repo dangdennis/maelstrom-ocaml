@@ -19,8 +19,17 @@ Translated the rust [`maelstrom-node`](https://github.com/sitano/maelstrom-rust-
 1. `cd maelstrom`
 
 2. challenge 1 echo
+
    ```
    dune build
-   
-   ./maelstrom test -w init --bin ../ocaml/_build/default/bin/1-echo/main.exe --node-count 1 --time-limit 10
+
+   ./maelstrom test -w echo --bin ../ocaml/_build/default/bin/01-echo/main.exe --node-count 1 --time-limit 10
+   ```
+
+3. challenge 2 unique ids
+
+   ```
+   dune build
+
+   ./maelstrom test -w unique-ids --bin ../ocaml/_build/default/bin/02-unique-ids/main.exe --time-limit 30 --rate 1000 --node-count 3 --availability total --nemesis partition
    ```
