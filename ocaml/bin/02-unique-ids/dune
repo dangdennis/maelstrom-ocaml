@@ -1,4 +1,4 @@
 (executable
- (public_name 03-unique-ids)
+ (public_name 02-unique-ids)
  (name main)
  (libraries maelstrom))

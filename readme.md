@@ -33,5 +33,5 @@ Translated the rust [`maelstrom-node`](https://github.com/sitano/maelstrom-rust-
 6. challenge 3 broadcast
 
 ```
-./maelstrom test -w broadcast --bin ../ocaml/_build/default/bin/03-broadcast/main.exe --node-count 1 --time-limit 20 --rate 10
+./maelstrom test -w broadcast --bin ../ocaml/_build/default/bin/03a-broadcast/main.exe --node-count 1 --time-limit 20 --rate 10
 ```

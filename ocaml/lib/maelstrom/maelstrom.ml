@@ -4,16 +4,16 @@ module Print = Print
 
 let node_id = ref ""
 let node_ids = ref []
-let state = ref 0
+let state : int list ref = ref []
 
 module Node = struct
   let get_node_id () = !node_id
   let get_node_ids () = !node_ids
   let generate_node_id () = get_node_id () ^ "-" ^ Uuid.generate_uuid ()
   let read_state () = !state
-  let set_state value = state := value
+  let set_state value = state := value :: !state
 
-  let reply recv_msg body =
+  let reply ?(dev = false) recv_msg body =
     let reply_msg =
       `Assoc
         [ "src", `String (get_node_id ())
@@ -21,6 +21,7 @@ module Node = struct
         ; "body", body
         ]
     in
+    if dev then Print.print_stderr (Yojson.to_string reply_msg);
     Print.print_stdout (Yojson.to_string reply_msg)
   ;;
 end
