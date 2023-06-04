@@ -3,18 +3,18 @@ module Message = Message
 module Print = Print
 
 let node_id = ref ""
-let peer_ids : string list ref = ref []
+let node_ids : string list ref = ref []
 
 module Node = struct
   let get_node_id () = !node_id
-  let get_peer_ids () = !peer_ids
+  let get_node_ids () = !node_ids
 end
 
 module MessageProcessor = struct
   let handle_init message =
     try
       node_id := Message.get_node_id message;
-      peer_ids := Message.get_node_ids message;
+      node_ids := Message.get_node_ids message;
       Print.print_stderr ("Node " ^ !node_id ^ " initialized");
       let reply_msg : Protocol.init_ok_message =
         { src = !node_id

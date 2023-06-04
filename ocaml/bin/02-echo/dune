@@ -1,0 +1,4 @@
+(executable
+ (public_name 02-echo)
+ (name main)
+ (libraries maelstrom))
