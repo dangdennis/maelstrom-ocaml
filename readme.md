@@ -1,5 +1,9 @@
 # gossip glomers - fly distributed system challenges
 
+## Maelstrom OCaml client
+
+You can find the implementation in `/ocaml/lib/maelstrom`.
+
 ## Go implementation
 
 1. `cd maelstrom`
@@ -59,4 +63,10 @@ Translated the rust [`maelstrom-node`](https://github.com/sitano/maelstrom-rust-
 
 ```
 ./maelstrom test -w broadcast --bin ../ocaml/_build/default/bin/03e-efficient-broadcast-faster/main.exe --node-count 25 --time-limit 20 --rate 100 --latency 100
+```
+
+### 4 grow-only counter
+
+```
+./maelstrom test -w g-counter --bin ../ocaml/_build/default/bin/04-grow-only-counter/main.exe  --node-count 3 --rate 100 --time-limit 20 --nemesis partition
 ```
