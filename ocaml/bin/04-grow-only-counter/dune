@@ -1,4 +1,4 @@
 (executable
  (public_name 04-grow-only-counter)
  (name main)
- (libraries maelstrom))
+ (libraries maelstrom threads))

@@ -2,7 +2,7 @@ module Protocol = Protocol
 module Message = Message
 module Print = Print
 module Node = Node
-module Kv = Kv
+module Crdt = Crdt
 
 module MessageProcessor = struct
   let handle_init message =
@@ -25,7 +25,9 @@ module MessageProcessor = struct
 
   let handle message handler =
     match Message.get_type message with
-    | "init" -> handle_init message
+    | "init" ->
+      handle_init message;
+      handler message
     | _ -> handler message
   ;;
 end

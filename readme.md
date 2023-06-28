@@ -18,8 +18,6 @@ You can find the implementation in `/ocaml/lib/maelstrom`.
 
 ## OCaml implementation
 
-Translated the rust [`maelstrom-node`](https://github.com/sitano/maelstrom-rust-node/blob/main/src/protocol.rs#L41) to ocaml
-
 1. `cd maelstrom`
 2. dune build
 
@@ -70,3 +68,8 @@ Translated the rust [`maelstrom-node`](https://github.com/sitano/maelstrom-rust-
 ```
 ./maelstrom test -w g-counter --bin ../ocaml/_build/default/bin/04-grow-only-counter/main.exe  --node-count 3 --rate 100 --time-limit 20 --nemesis partition
 ```
+
+Too tired to debug. I think the general idea is right to track all the states held by each node. Each node is responsible for repeatedly broadcasting its state to all other nodes, and nodes merge the states they receive from other nodes into their own state. The state is a map from node id to the number of increments that node has performed. The merge function is just a map union with the max function as the merge function for duplicate keys. Since we're lazy, each node broadcasts its entire state.
+
+A couple optimizations we can do is to batch outbound broadcasts to sync and send state deltas. To handle deltas though, each node would need to handle out-of-order messages and duplicate updates.
+

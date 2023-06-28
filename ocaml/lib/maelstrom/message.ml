@@ -16,6 +16,7 @@ let get_broadcasted_state msg =
 ;;
 
 let get_add_delta msg = msg |> member "body" |> member "delta" |> to_int
+let get_replication_state msg = msg |> member "body" |> member "state" |> to_assoc
 
 module StringSet = Set.Make (String)
 module IntSet = Set.Make (Int)
